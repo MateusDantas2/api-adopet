@@ -1,6 +1,6 @@
 package br.com.alura.adopet.api.validation.impl;
 
-import br.com.alura.adopet.api.dto.SolicitacaoAdocaoDTO;
+import br.com.alura.adopet.api.dto.adocao.SolicitacaoAdocaoDTO;
 
 /**
  * @author Mateus Dantas

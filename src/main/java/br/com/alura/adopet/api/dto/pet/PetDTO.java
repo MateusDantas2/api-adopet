@@ -1,4 +1,4 @@
-package br.com.alura.adopet.api.dto;
+package br.com.alura.adopet.api.dto.pet;
 
 import br.com.alura.adopet.api.model.Pet;
 import br.com.alura.adopet.api.model.TipoPet;
@@ -6,9 +6,9 @@ import br.com.alura.adopet.api.model.TipoPet;
 /**
  * @author Mateus Dantas
  */
-public record DadosDetalhesPet(Long id, TipoPet tipo, String nome, String raca, Integer idade) {
+public record PetDTO(Long id, TipoPet tipo, String nome, String raca, Integer idade) {
 
-    public DadosDetalhesPet(Pet pet) {
+    public PetDTO(Pet pet) {
         this(pet.getId(), pet.getTipo(), pet.getNome(), pet.getRaca(), pet.getIdade());
     }
 }

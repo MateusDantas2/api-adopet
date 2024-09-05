@@ -31,8 +31,7 @@ public class Adocao {
     @Column(name = "justificativa_status")
     private String justificativaStatus;
 
-    public Adocao() {
-    }
+    public Adocao() {}
 
     public Adocao(Tutor tutor, Pet pet, String motivo) {
         this.tutor = tutor;
