@@ -15,11 +15,12 @@ import java.util.List;
 public class PetController {
 
     @Autowired
-    private PetService petService;
+    private PetService service;
 
     @GetMapping
     public ResponseEntity<List<PetDTO>> listarTodosDisponiveis() {
-        List<PetDTO> pets = petService.listarTodosDisponiveis();
+        List<PetDTO> pets = service.buscarPetsDisponiveis();
         return ResponseEntity.ok(pets);
     }
+
 }

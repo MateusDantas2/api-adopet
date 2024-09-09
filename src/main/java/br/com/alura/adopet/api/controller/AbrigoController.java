@@ -2,21 +2,18 @@ package br.com.alura.adopet.api.controller;
 
 import br.com.alura.adopet.api.dto.abrigo.AbrigoDTO;
 import br.com.alura.adopet.api.dto.abrigo.CadastroAbrigoDTO;
+import br.com.alura.adopet.api.dto.pet.CadastroPetDTO;
 import br.com.alura.adopet.api.dto.pet.PetDTO;
 import br.com.alura.adopet.api.exception.ValidacaoException;
-import br.com.alura.adopet.api.model.Abrigo;
-import br.com.alura.adopet.api.model.Pet;
-import br.com.alura.adopet.api.repository.AbrigoRepository;
+import br.com.alura.adopet.api.domain.entity.Abrigo;
 import br.com.alura.adopet.api.service.AbrigoService;
 import br.com.alura.adopet.api.service.PetService;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -58,7 +55,7 @@ public class AbrigoController {
 
     @PostMapping("/{idOuNome}/pets")
     @Transactional
-    public ResponseEntity<String> cadastrarPet(@PathVariable String idOuNome, @RequestBody @Valid CadastroPetDto dto) {
+    public ResponseEntity<String> cadastrarPet(@PathVariable String idOuNome, @RequestBody @Valid CadastroPetDTO dto) {
         try {
             Abrigo abrigo = abrigoService.carregarAbrigo(idOuNome);
             petService.cadastrarPet(abrigo, dto);
@@ -67,4 +64,5 @@ public class AbrigoController {
             return ResponseEntity.notFound().build();
         }
     }
+
 }

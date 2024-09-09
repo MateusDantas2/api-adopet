@@ -4,23 +4,21 @@ import br.com.alura.adopet.api.dto.abrigo.AbrigoDTO;
 import br.com.alura.adopet.api.dto.abrigo.CadastroAbrigoDTO;
 import br.com.alura.adopet.api.dto.pet.PetDTO;
 import br.com.alura.adopet.api.exception.ValidacaoException;
-import br.com.alura.adopet.api.model.Abrigo;
-import br.com.alura.adopet.api.repository.AbrigoRepository;
-import br.com.alura.adopet.api.repository.PetRepository;
+import br.com.alura.adopet.api.domain.entity.Abrigo;
+import br.com.alura.adopet.api.domain.repository.AbrigoRepository;
+import br.com.alura.adopet.api.domain.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-/**
- * @author Mateus Dantas
- */
 @Service
 public class AbrigoService {
 
     @Autowired
     private AbrigoRepository abrigoRepository;
+
     @Autowired
     private PetRepository petRepository;
 
@@ -33,9 +31,9 @@ public class AbrigoService {
     }
 
     public void cadatrar(CadastroAbrigoDTO dto) {
-        boolean isCadastrado = abrigoRepository.existsByNomeOrTelefoneOrEmail(dto.nome(), dto.telefone(), dto.email());
+        boolean jaCadastrado = abrigoRepository.existsByNomeOrTelefoneOrEmail(dto.nome(), dto.telefone(), dto.email());
 
-        if (isCadastrado) {
+        if (jaCadastrado) {
             throw new ValidacaoException("Dados já cadastrados para outro abrigo!");
         }
 
@@ -63,4 +61,5 @@ public class AbrigoService {
 
         return optional.orElseThrow(() -> new ValidacaoException("Abrigo não encontrado"));
     }
+
 }
