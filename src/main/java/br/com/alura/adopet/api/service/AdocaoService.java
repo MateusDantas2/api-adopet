@@ -10,7 +10,7 @@ import br.com.alura.adopet.api.domain.repository.AdocaoRepository;
 import br.com.alura.adopet.api.domain.repository.PetRepository;
 import br.com.alura.adopet.api.domain.repository.TutorRepository;
 import br.com.alura.adopet.api.impl.EmailService;
-import br.com.alura.adopet.api.validacoes.ValidacaoSolicitacaoAdocao;
+import br.com.alura.adopet.api.impl.SolicitacaoAdocaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +33,7 @@ public class AdocaoService {
     private EmailService emailService;
 
     @Autowired
-    private List<ValidacaoSolicitacaoAdocao> validacoes;
+    private List<SolicitacaoAdocaoImpl> validacoes;
 
     public void solicitar(SolicitacaoAdocaoDTO dto) {
         Pet pet = petRepository.getReferenceById(dto.idPet());
